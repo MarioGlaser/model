@@ -19,25 +19,36 @@ import lombok.Data;
 public class RegisteredUser {
 
 
+    @Column (length = 128) 
+    private String eMail;
+    
+    @Column (length = 4096)
+    private String encryptedTestData;
+    
+    @Column (length = 4096)
+    private String encryptedWrappingKey;
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column (length = 4096)
-    @NotNull
-    private String pulbicKeyValue;
+    @Column (length = 2048)
+    private String idToken;
+    
     
     @JsonIgnore
     @Transient
     private PublicKey publicKey;
     
     
-    @Column (length = 128) 
-    private String userName;
+    @Column (length = 1024)
+    @NotNull
+    private String pulbicKeyHash;
     
     
-    @Column (length = 2048)
-    private String idToken;
-    
+    @Column (length = 4096)
+    @NotNull
+    private String pulbicKeyValue;
     
 }
