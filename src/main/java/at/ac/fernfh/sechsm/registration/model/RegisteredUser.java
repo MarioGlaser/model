@@ -1,6 +1,7 @@
 package at.ac.fernfh.sechsm.registration.model;
 
 import java.security.PublicKey;
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +20,12 @@ import lombok.Data;
 public class RegisteredUser {
 
 
+    @Column
+    private Instant authTime;
+    
+    @Column (length = 2048)
+    private String deviceInfo;
+    
     @Column (length = 128) 
     private String eMail;
     
@@ -28,6 +35,8 @@ public class RegisteredUser {
     @Column (length = 4096)
     private String encryptedWrappingKey;
     
+    @Column
+    private Instant expTime;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +45,9 @@ public class RegisteredUser {
     @Column (length = 2048)
     private String idToken;
     
-    
     @JsonIgnore
     @Transient
     private PublicKey publicKey;
-    
     
     @Column (length = 1024)
     @NotNull
@@ -50,5 +57,9 @@ public class RegisteredUser {
     @Column (length = 4096)
     @NotNull
     private String pulbicKeyValue;
+    
+    
+    @Column (length = 128)
+    private String subject;
     
 }
