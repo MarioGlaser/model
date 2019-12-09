@@ -13,7 +13,6 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.bouncycastle.util.encoders.Base64;
-import org.bouncycastle.util.encoders.Hex;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -75,6 +74,5 @@ public class RegisteredUser {
 		
 		return publicKey;
 	}
-
 }
 
